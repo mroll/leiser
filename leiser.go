@@ -7,6 +7,8 @@ import (
 	"math/rand"
 	"os"
 	"bufio"
+	"database/sql"
+	"
 )
 
 var roomName = "#unix"
@@ -46,14 +48,14 @@ func main() {
 	})
 
 	conn.AddCallback("PRIVMSG", func(e *irc.Event) {
-		matched, _ := regexp.MatchString("(hello|hi|hey) " + botName + ".*", e.Message())
+		matched, _ := regexp.MatchString("^(hello|hi|hey) " + botName + ".*", e.Message())
 		if matched {
 			conn.Privmsg(roomName, "Hi, " + e.Nick)
 		}
 	})
 
 	conn.AddCallback("PRIVMSG", func(e *irc.Event) {
-		matched, _ := regexp.MatchString(botName + " quote me", e.Message())
+		matched, _ := regexp.MatchString("^"botName + " quote me", e.Message())
 		if matched {
 			index := rand.Intn(len(quoteArray))
 			quote := quoteArray[index]
