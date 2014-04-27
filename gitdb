@@ -1,0 +1,76 @@
+-- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: leiserDB
+-- ------------------------------------------------------
+-- Server version	5.5.37-0ubuntu0.14.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `factoids`
+--
+
+DROP TABLE IF EXISTS `factoids`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `factoids` (
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `object` varchar(200) DEFAULT NULL,
+  `definition` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `factoids`
+--
+
+LOCK TABLES `factoids` WRITE;
+/*!40000 ALTER TABLE `factoids` DISABLE KEYS */;
+INSERT INTO `factoids` VALUES (1,'string','an array of characters'),(2,'bird','a small animal with wings and a beak. lays eggs'),(3,'couch','a comfy place to sit'),(4,'pizza','circular and covered in cheese');
+/*!40000 ALTER TABLE `factoids` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `taglines`
+--
+
+DROP TABLE IF EXISTS `taglines`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `taglines` (
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `body` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `taglines`
+--
+
+LOCK TABLES `taglines` WRITE;
+/*!40000 ALTER TABLE `taglines` DISABLE KEYS */;
+INSERT INTO `taglines` VALUES (1,'test phrase'),(2,'I am Homer of the Borg. You will be assim.... Hmm... Donuts...'),(3,'A radioactive cat has eighteen half-lives.'),(4,'Every why hath a wherefore.'),(5,'Crying: strengthens immune system by cleansing impurities'),(6,'In ENGLISH, Data?! --Captain Beverly Picard'),(7,'A book (returned) in time saves time.'),(8,'Better attitudes through chemistry.'),(9,'Marriage is a trip between Niagra Falls and Reno.'),(10,'\"Nobody listens unless you swear every other word.\" -- Kirk'),(11,'Notice: All incoming fire has the right of way.'),(12,'Quark! Quark! Beware the quantum duck!'),(13,'Never trust a computer you cannot carry.'),(14,'Behaviorism is the art of pulling habits out'),(15,'SDR: Shift Disk Right'),(16,'The Fifth Rule: You have taken yourself too seriously.'),(17,'Expensive imported beer is good for the sole.'),(18,'Love of Money: The root of all EVIL...'),(19,'Computers make very fast, very accurate mistakes'),(20,'Oxymoron: Conservative Scholar'),(21,'Man Vs. Beer: A beer will only come when you want it to.'),(22,'Gardeners are prone to sod-den decisions!'),(23,'\"I am Homer of the Borg. You will be assim.... Hmm... Donuts...\"'),(24,'OPERATORS really know how to mount it'),(25,'Frogs are smart.  They ea           Refer#: NONE'),(26,'Hollywood Gossip: Phyllis Zinn'),(27,'A liberal is nothing but a communist on Prozac!'),(28,'96.37% of all statistics are made up'),(29,'Use IF...ELSE  IF...ELSE  IF...ELSE... to implement multi'),(30,'Visit beautiful Vergas, Minnesota.'),(31,'SPELLCASTERS do it with their rods/staves/wands'),(32,'ARC.angel says \"zip.itup\"'),(33,'Look, mom: No disk drive!'),(34,'Cats have 9 lives.  Do radioactive cats have 18 half-lives?'),(35,'A pessimist is a well informed optimist.'),(36,'Assimilation is futile.  You will be resisted.'),(37,'\"What is this...  time?\"  Wormhole creators'),(38,'What is the highest pyramid in the world?  Amway.'),(39,'SWAT: SWAp Terminals'),(40,'Experience is what you get after you need it'),(41,'SYSTEM ERROR: press F13 to continue...'),(42,'<Ctrl<<Alt<<Del< to read the next message'),(43,'My favorite color?  Red.  No, BluAAAAAHHH!'),(44,'James S. Brady, Press Secretary to President Reagan was an Eagle Scout.'),(45,'You are aging when all your black book names end in M.D.'),(46,'Klingon vessel uncloaking....or is it Odo?'),(47,'TROI: I feel pain, GREAT pain! ... RIKER: Glad you liked it!'),(48,'Thank you, God.  Keep it up!!!'),(49,'Disks travel in packs.'),(50,'Cut the Grass!: Moses Lawn'),(51,'I TAUGHT MY DUCK TO SAY \".QWK .QWK\"'),(52,'Confuse the world -- smile all day Monday!'),(53,'No brain, no effect!'),(54,'Reality is all a point of view.'),(55,'Fashion:  A form of ugliness so intolerable that it changes every six months.'),(56,'Let all fetuses live.'),(57,'Do witches run spell checkers?'),(58,'<<<DEADLY NINJA THROWING TAGLINE>>>'),(59,'YOU VACUOUS STUFFY-NOSED MALODOROUS PERVERT!!!'),(60,'Downstairs, in the historic Old Grid Building.'),(61,'BATF Cafeteria Menu: Blackened Baby Back Ribs.'),(62,'DRUMMERS do it longer'),(63,'duck season, wabbit season, duck season, wabbit season..'),(64,'Narrow minded: looks through keyhole with both eyes at the same time.'),(65,'\"A radioactive cat has eighteen half-lives.\"'),(66,'Want a taste of religion?  Bite a minister!'),(67,'\"Every why hath a wherefore.\"'),(68,'You will be invited to dine with many important people.'),(69,'Focus On the Family; \"McCulture\" at its very best!'),(70,'Define normal.'),(71,'Artists do it by design.'),(72,'\"Dumber than advertised.\" -- Yakko Warner'),(73,'Sysoping makes you fat.'),(74,'FORE!.........................................<BONK!<'),(75,'Skydivers go down faster.'),(76,'Time flies when you\'re in a coma.'),(77,'Crying: strengthens immune system by cleansing impurities'),(78,'In ENGLISH, Data?! --Captain Beverly Picard'),(79,'A book (returned) in time saves time.'),(80,'Better attitudes through chemistry.'),(81,'Marriage is a trip between Niagra Falls and Reno.'),(82,'Notice: All incoming fire has the right of way.'),(83,'Quark! Quark! Beware the quantum duck!'),(84,'I\'m floating in a most peculiar way.'),(85,'Never trust a computer you cannot carry.'),(86,'Behaviorism is the art of pulling habits out'),(87,'SDR: Shift Disk Right'),(88,'The Fifth Rule: You have taken yourself too seriously.'),(89,'Bearjoran takes over DS9 in Pooh D\'Etat!'),(90,'Women: Can\'t live with \'em, can\'t shoot \'em, pass the beer nuts.'),(91,'Expensive imported beer is good for the sole.'),(92,'Love of Money: The root of all EVIL...'),(93,'Remember when \'lots of ram\' meant 32k?'),(94,'Hiya, Doc! What\'s cookin\'? - Data'),(95,'Computers make very fast, very accurate mistakes'),(96,'Tasha Burger: It\'ll come up again later after it\'s gone.'),(97,'113 grams, 10 milliliters ... he\'s lead, Jim.'),(98,'Oxymoron: Conservative Scholar'),(99,'Man Vs. Beer: A beer will only come when you want it to.'),(100,'Gardeners are prone to sod-den decisions!'),(101,'OPERATORS really know how to mount it'),(102,'Don\'t blame me, it\'s San Andrea\'s fault'),(103,'Frogs are smart.  They ea           Refer#: NONE'),(104,'Hollywood Gossip: Phyllis Zinn'),(105,'A liberal is nothing but a communist on Prozac!'),(106,'96.37% of all statistics are made up'),(107,'Why don\'t sharks bite lawyers?  Professional courtesy.'),(108,'QaH! jIpumpu\' \'ej jIHu\'laHbe\'!'),(109,'I can\'t be humble -- it\'s just not honest.'),(110,'i don\'t beLIEve slick wilLIE!'),(111,'Use IF...ELSE  IF...ELSE  IF...ELSE... to implement multi'),(112,'Visit beautiful Vergas, Minnesota.'),(113,'SPELLCASTERS do it with their rods/staves/wands'),(114,'Look, mom: No disk drive!'),(115,'Cats have 9 lives.  Do radioactive cats have 18 half-lives?'),(116,'A pessimist is a well informed optimist.'),(117,'Assimilation is futile.  You will be resisted.'),(118,'We\'re testing as QWK as we can'),(119,'What is the highest pyramid in the world?  Amway.'),(120,'SWAT: SWAp Terminals'),(121,'Experience is what you get after you need it'),(122,'SYSTEM ERROR: press F13 to continue...'),(123,'<Ctrl<<Alt<<Del< to read the next message'),(124,'My favorite color?  Red.  No, BluAAAAAHHH!'),(125,'James S. Brady, Press Secretary to President Reagan was an Eagle Scout.'),(126,'You are aging when all your black book names end in M.D.'),(127,'Klingon vessel uncloaking....or is it Odo?'),(128,'TROI: I feel pain, GREAT pain! ... RIKER: Glad you liked it!'),(129,'Thank you, God.  Keep it up!!!'),(130,'Disks travel in packs.'),(131,'Cut the Grass!: Moses Lawn'),(132,'It wasn\'t broken..until I started playing with it!'),(133,'These were great.  I just tried to search TLX\'s database and got a major'),(134,'Confuse the world -- smile all day Monday!'),(135,'You mean there are BBS\'s that AREN\'T run by drunks?'),(136,'No brain, no effect!'),(137,'Don\'t eat with you mouth full.'),(138,'Reality is all a point of view.'),(139,'Fashion:  A form of ugliness so intolerable that it changes every six months.'),(140,'Let all fetuses live.'),(141,'Do witches run spell checkers?'),(142,'<<<DEADLY NINJA THROWING TAGLINE>>>'),(143,'YOU VACUOUS STUFFY-NOSED MALODOROUS PERVERT!!!'),(144,'Downstairs, in the historic Old Grid Building.'),(145,'BATF Cafeteria Menu: Blackened Baby Back Ribs.'),(146,'DRUMMERS do it longer'),(147,'Pants:  Trousers\' country cousins.'),(148,'duck season, wabbit season, duck season, wabbit season..'),(149,'Narrow minded: looks through keyhole with both eyes at the same time.'),(150,'Want a taste of religion?  Bite a minister!'),(151,'You will be invited to dine with many important people.'),(152,'Define normal.'),(153,'Artists do it by design.'),(154,'Sysoping makes you fat.'),(155,'A man\'s best friend is his copy of Messenger V1.0.'),(156,'FORE!.........................................<BONK!<'),(157,'Skydivers go down faster.');
+/*!40000 ALTER TABLE `taglines` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-04-27 19:21:43
