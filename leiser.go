@@ -170,6 +170,7 @@ func main() {
 		}
 	})
 
+	// Dice Roll
 	conn.AddCallback("PRIVMSG", func(e *irc.Event) {
 		matched := dicerollRegexp.FindStringSubmatch(e.Message())
 		if len(matched) == 2 {
