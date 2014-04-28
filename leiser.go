@@ -1,7 +1,7 @@
 package main
 
 import (
-	"strings"
+	"strconv"
 	"time"
 	"fmt"
 	"regexp"
@@ -37,7 +37,9 @@ func main() {
 
 	var weatherRegexp = regexp.MustCompile("(?:leiser weather ([0-9]{5}))")
 	var lookupRegexp = regexp.MustCompile("(?:^" + botName + " lookup ([a-zA-Z0-9]+))")
-	var defineRegexp = regexp.MustCompile("(?:^" + botName + " define ([a-zA-Z0-9]+): (.*))")
+	var defineRegexp = regexp.MustCompile("^" + botName + " define ([a-zA-Z0-9]+): (.*)")
+	var removeRegexp = regexp.MustCompile("^" + botName + " remove ([a-zA-Z0-9]+)")
+	var dicerollRegexp = regexp.MustCompile("^" + botName + " roll me ([0-9]+)")
 	var helpRegexp = regexp.MustCompile("^leiser (what can you do|help|man)")
 
 	conn := irc.IRC(botName, botName)
@@ -58,6 +60,18 @@ func main() {
 		}
 	})
 
+	// Help
+	conn.AddCallback("PRIVMSG", func(e *irc.Event) {
+		matched := helpRegexp.FindStringSubmatch(e.Message())
+		if len(matched) == 2 {
+			conn.Privmsg(roomName, "Define terms: leiser define <term>: <definition>")
+			conn.Privmsg(roomName, "Lookup terms: leiser lookup <term>")
+			conn.Privmsg(roomName, "Weather: leiser weather <zipcode>")
+			conn.Privmsg(roomName, "Random Quote: leiser quote me")
+			conn.Privmsg(roomName, "Dice Roll: leiser roll me <# of sides>")
+		}
+	})
+
 	// Quote me
 	conn.AddCallback("PRIVMSG", func(e *irc.Event) {
 		matched, _ := regexp.MatchString("^" + botName + " quote me", e.Message())
@@ -75,18 +89,33 @@ func main() {
 	// Define
 	conn.AddCallback("PRIVMSG", func(e *irc.Event) {
 		matched := defineRegexp.FindStringSubmatch(e.Message())
-		if len(matched) == 2 {
+		if len(matched) == 3 {
 			object := matched[1]
-			def := strings.SplitN(e.Message(), ": ", 2)
+			def := matched[2]
 			
 
-			_, err := db.Start("insert into factoids (object, definition) values ('%s', '%s')", object, def[1])
+			_, err := db.Start("insert into factoids (object, definition) values ('%s', '%s')", object, def)
 			if err != nil {
 				panic(err)
 			}
-			conn.Privmsg(roomName,object + ": " + def[1])
+			conn.Privmsg(roomName,object + ": " + def)
 		}
 
+	})
+
+	// Remove factoid
+	conn.AddCallback("PRIVMSG", func(e *irc.Event) {
+		matched := removeRegexp.FindStringSubmatch(e.Message())
+		if len(matched) == 2 {
+			object := matched[1]
+			_, err := db.Start("delete from factoids where object = '" + object + "'")
+			if err != nil {
+				conn.Privmsg(roomName, "Failed to remove " + object)
+				return
+			}
+
+			conn.Privmsg(roomName, "Removed " + object + " from factoid database")
+		}
 	})
 
 	// Lookup
@@ -142,12 +171,17 @@ func main() {
 	})
 
 	conn.AddCallback("PRIVMSG", func(e *irc.Event) {
-		matched := helpRegexp.FindStringSubmatch(e.Message())
+		matched := dicerollRegexp.FindStringSubmatch(e.Message())
 		if len(matched) == 2 {
-			conn.Privmsg(roomName, "Define terms: leiser define <term>: <definition> (Not currently operational)")
-			conn.Privmsg(roomName, "Lookup terms: leiser lookup <term>")
-			conn.Privmsg(roomName, "Weather: leiser weather <zipcode>")
-			conn.Privmsg(roomName, "Random Quote: leiser quote me")
+			sides, err := strconv.ParseInt(matched[1], 0, 64)
+			if err != nil {
+				conn.Privmsg(roomName, "Error parsing your input " + e.Nick)
+				return
+			}
+
+			result := rand.Intn(int(sides))
+			fmt.Println(result)
+			conn.Privmsg(roomName, strconv.Itoa(result))
 		}
 	})
 
