@@ -180,9 +180,8 @@ func main() {
 				return
 			}
 
-			result := rand.Intn(int(sides))
-			fmt.Println(result)
-			conn.Privmsg(roomName, strconv.Itoa(result))
+			result := rand.Intn(int(sides)-1)
+			conn.Privmsg(roomName, strconv.Itoa(result+1))
 		}
 	})
 
